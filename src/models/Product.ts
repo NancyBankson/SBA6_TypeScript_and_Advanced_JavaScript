@@ -1,3 +1,5 @@
+import { calculateDiscount } from "../utils/discountCalculator.js";
+
 interface ProductDimensions {
   width: number;
   height: number;
