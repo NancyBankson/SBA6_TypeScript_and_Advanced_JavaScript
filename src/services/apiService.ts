@@ -1,13 +1,21 @@
-export async function fetchData() {
+import { Product } from "../models/Product.js";
+
+interface productObject {
+    products: Product[];
+
+}
+
+export async function fetchData(): Promise<productObject | undefined> {
     try {
-        const response = await
-        fetch('https://dummyjson.com/products');
+        const response = await fetch("https://dummyjson.com/products");
+
         if (!response.ok) {
-            throw new Error("Network is not responding")
+            throw new Error("Network is not responding");
         }
-        const data = await response.json();
+        const data: productObject = await response.json();
+        return data;
     } catch (error) {
-        console.error("Fetch error", error);
-    }    
+        console.error("Fetch error:", error);
+    }
 }
 
