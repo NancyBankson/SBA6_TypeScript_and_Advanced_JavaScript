@@ -56,10 +56,17 @@ export class Product {
         // this.thumbnail = thumbnail;
     }
     getPriceWithDiscount() {
-        return Math.round(100 * (this.price + calculateDiscount(this) + calculateTax(this))) / 100;
+        return Math.round(100 * (this.price - calculateDiscount(this) + calculateTax(this))) / 100;
     }
     displayDetails() {
-        return `${this.title} Category: ${this.category} Price: $${this.price} Discount: ${this.discountPercentage} Description: ${this.description} ID#: ${this.id} Ratings: ${this.rating} Total Price: $ ${this.getPriceWithDiscount}.`;
+        return `
+      Product: ${this.title}
+      Category: ${this.category}
+      Price: $ ${this.price}
+      Discount: ${this.discountPercentage}%
+      Description: ${this.description}
+      ID#: ${this.id}
+      Ratings: ${this.rating} ⭐`;
     }
 }
 //# sourceMappingURL=Product.js.map
