@@ -1,6 +1,4 @@
 import { Product } from "./models/Product.js";
-import { calculateTax } from "./utils/taxCalculator.js";
-import { calculateDiscount } from "./utils/discountCalculator.js";
 import { fetchData } from "./services/apiService.js";
 fetchData()
     .then(data => {
@@ -12,5 +10,9 @@ fetchData()
       Total price with tax and discount: $ ${newProduct.getPriceWithDiscount()}`);
     }
 })
-    .catch(error => console.error("Fetch error:", error));
+    .catch(error => {
+    if (error instanceof TypeError) {
+        console.error("Fetch Error: Product list not retreived, 'products' is undefined");
+    }
+});
 //# sourceMappingURL=main.js.map
